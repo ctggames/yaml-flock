@@ -1,0 +1,4 @@
+# core.autocrlf is on, so a text file is stored LF and checked out CRLF on Windows. The round-trip
+# fixture is compared byte for byte against freshly generated output, so a platform-dependent checkout
+# would make that test pass on one machine and fail on another. Pin it.
+src/test/resources/fixtures/*.yml text eol=lf

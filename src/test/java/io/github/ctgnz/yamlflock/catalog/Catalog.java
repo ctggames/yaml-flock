@@ -7,6 +7,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import io.github.ctgnz.yamlflock.YamlBlockStyle;
+import io.github.ctgnz.yamlflock.YamlFlowStyle;
+
 /**
  * The root of the harness model: a library catalogue, carrying no style annotation of its own so that it is written in plain block style.
  * <p>
@@ -14,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * arranged to hit every branch.
  */
 @JsonPropertyOrder({
-    "name", "established", "books", "archive", "index"
+    "name", "established", "foundingAcquisition", "books", "archive", "index"
 })
 public class Catalog {
 
@@ -23,6 +26,7 @@ public class Catalog {
     private final List<Book> books = new ArrayList<>();
     private final List<ArchiveEntry> archive = new ArrayList<>();
     private SearchIndex index;
+    private Edition foundingAcquisition;
 
     public Catalog() {
     }
@@ -44,6 +48,11 @@ public class Catalog {
 
     public Catalog indexed(SearchIndex searchIndex) {
         this.index = searchIndex;
+        return this;
+    }
+
+    public Catalog foundedOn(Edition edition) {
+        this.foundingAcquisition = edition;
         return this;
     }
 
@@ -74,6 +83,21 @@ public class Catalog {
     @JsonInclude(Include.NON_NULL)
     public SearchIndex getIndex() {
         return index;
+    }
+
+    /**
+     * The first edition the library ever took in, written one field per line.
+     * <p>
+     * {@link Edition} is {@link YamlFlowStyle}, so every other edition in a catalogue is inlined, which is right for a line of inventory. This one is a record of provenance that
+     * gets read on its own, so it is given room. The type cannot carry that statement, because it has to stay inline everywhere else.
+     * <p>
+     * Annotated on the member rather than named in a class-level {@link YamlBlockStyle}, which would work equally well here - the statement simply belongs beside the property it
+     * describes. {@link ArchiveEntry} demonstrates the other form, for a property that cannot be reached directly.
+     */
+    @YamlBlockStyle
+    @JsonInclude(Include.NON_NULL)
+    public Edition getFoundingAcquisition() {
+        return foundingAcquisition;
     }
 
 }

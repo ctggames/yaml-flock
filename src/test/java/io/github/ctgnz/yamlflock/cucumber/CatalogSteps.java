@@ -92,6 +92,11 @@ public class CatalogSteps {
         catalog.holding(book);
     }
 
+    @And("the catalogue was founded on a {word} edition of {int} pages published {int}")
+    public void theCatalogueWasFoundedOn(String format, int pages, int published) {
+        catalog.foundedOn(new Edition(Format.valueOf(format), pages, published));
+    }
+
     @And("the catalogue stacks that archive entry")
     public void theCatalogueStacksThatArchiveEntry() {
         catalog.stacked(archiveEntry);

@@ -135,6 +135,23 @@
                 <version>3.6.0</version>
             </plugin>
             <plugin>
+                <!--
+                    Carries the round-trip test over the committed sample document. Separate from surefire
+                    because it reads a 100-book fixture off disk rather than building a document in memory,
+                    and because failsafe reports at verify rather than failing the build mid-phase.
+                -->
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>com.diffplug.spotless</groupId>
                 <artifactId>spotless-maven-plugin</artifactId>
                 <version>2.44.5</version>

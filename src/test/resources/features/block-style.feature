@@ -50,3 +50,17 @@ Feature: Choosing block style for one property
           pages: 777
           published: 1979
       """
+
+  Scenario: one property of a flow-style type is written one field per line, because that member asks for it
+    Given a catalogue "Ctgnz Reference Library" established 1987
+    And the catalogue was founded on a HARDBACK edition of 412 pages published 1987
+    When the catalogue is written as YAML
+    Then the YAML is:
+      """
+      name: Ctgnz Reference Library
+      established: 1987
+      foundingAcquisition:
+        format: HARDBACK
+        pages: 412
+        published: 1987
+      """
