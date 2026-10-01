@@ -63,27 +63,37 @@ Requires Java 25 and Jackson 2.22. The only dependencies are `jackson-databind` 
 
 ## Wiring it up
 
-`FlockYamlFactory` is a drop-in replacement for `YAMLFactory`, so the setup is ordinary Jackson:
-
 ```java
-DumperOptions options = new DumperOptions();
-options.setDefaultFlowStyle(FlowStyle.BLOCK);
-options.setWidth(480);
-options.setLineBreak(LineBreak.UNIX);
-
-YAMLFactory factory = new FlockYamlFactory(YAMLFactory.builder()
-    .enable(YAMLGenerator.Feature.MINIMIZE_QUOTES)
-    .disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER)
-    .dumperOptions(options));
-
-ObjectMapper mapper = new ObjectMapper(factory);
+ObjectMapper mapper = new ObjectMapper(FlockYamlFactory.builder().build());
 mapper.setDefaultPropertyInclusion(Include.NON_DEFAULT);
 ```
 
-Two of those settings matter more than they look:
+That is the whole of it. `FlockYamlFactory.builder()` arrives carrying the settings this library needs, so there is nothing you are obliged to remember:
 
-- **`MINIMIZE_QUOTES`** is what makes flow output worth reading. Without it every scalar is double-quoted, and an inlined map spends more characters on quotes than on content.
-- **A generous `setWidth`.** SnakeYAML folds a flow collection that exceeds the width, which reintroduces exactly the unpredictability the annotations exist to remove. Set it wider than your longest intended line.
+| setting | default | why it is the default |
+| --- | --- | --- |
+| default flow style | `BLOCK` | the fallback for anything the annotations do not inline |
+| line width | 480 | SnakeYAML folds a flow collection wider than this, which reintroduces exactly the unpredictability the annotations exist to remove |
+| line break | `WIN` | see below |
+| pretty flow | `false` | keeps an inlined collection on one line |
+| canonical | `false` | canonical output tags and quotes everything |
+| `MINIMIZE_QUOTES` | enabled | without it every scalar is double-quoted, and an inlined map spends more characters on quotes than on content |
+| `WRITE_DOC_START_MARKER` | disabled | no leading `---` on a configuration file |
+| code point limit | 16 MiB | SnakeYAML's own 3 MiB default refuses to read a large document |
+
+**The line break is worth a word**, because it is the opposite of what a library default usually is. These files are generated, committed, and then hand-edited, so a line break disagreeing with what is already on disk rewrites every line of every file the first time anything is written — the exact diff churn this library exists to avoid. `WIN` is what the projects this came from use. Override it where that is not what you want:
+
+```java
+ObjectMapper mapper = new ObjectMapper(FlockYamlFactory.builder()
+    .lineBreak(LineBreak.UNIX)
+    .build());
+```
+
+The named settings — `lineWidth`, `lineBreak`, `defaultFlowStyle`, `documentStartMarker`, `minimizeQuotes`, `codePointLimit` — refine one thing each, so changing one does not mean taking ownership of all of them. Everything `YAMLFactoryBuilder` offers still works too, and these methods return the Flock builder, so the chain keeps reaching them however you order it.
+
+Nothing is validated. `dumperOptions(...)` and `loaderOptions(...)` each replace a whole options object, so calling either discards any named setting applied to it beforehand — last call wins. Reach for them and you own the result.
+
+`Include.NON_DEFAULT` is a choice about your model rather than about YAML, so it stays on the mapper and out of the builder.
 
 Reading is unchanged: YAML style is a presentation choice, so a plain `YAMLFactory` parses anything this writes. Only the writing side needs the extension.
 

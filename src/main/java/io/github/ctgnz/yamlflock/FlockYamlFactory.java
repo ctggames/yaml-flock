@@ -13,18 +13,11 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator;
  * would go.
  *
  * <pre>
- * DumperOptions options = new DumperOptions();
- * options.setDefaultFlowStyle(FlowStyle.BLOCK);
- * options.setWidth(480);
- *
- * YAMLFactory factory = new FlockYamlFactory(YAMLFactory.builder().enable(YAMLGenerator.Feature.MINIMIZE_QUOTES).dumperOptions(options));
- *
- * ObjectMapper mapper = new ObjectMapper(factory);
+ * ObjectMapper mapper = new ObjectMapper(FlockYamlFactory.builder().build());
  * </pre>
  * <p>
- * Two settings are worth attention. {@code MINIMIZE_QUOTES} is what makes inline output worth reading, since without it every scalar is double-quoted. A generous {@code setWidth}
- * matters because SnakeYAML folds a flow collection that exceeds the width, which reintroduces the unpredictability the annotations exist to remove - set it wider than the longest
- * line intended.
+ * {@link #builder()} arrives already carrying the settings this library needs, so there is nothing a caller is obliged to remember; {@link FlockYamlFactoryBuilder} lists them and
+ * names the few worth changing. A {@link YAMLFactoryBuilder} configured by hand is still accepted through the constructor, for a caller who wants to own every setting.
  * <p>
  * Only writing needs this factory. YAML style is a presentation choice, so a plain {@code YAMLFactory} reads anything written here.
  *
@@ -41,6 +34,15 @@ public class FlockYamlFactory extends YAMLFactory {
      */
     public FlockYamlFactory(YAMLFactoryBuilder b) {
         super(b);
+    }
+
+    /**
+     * A builder carrying this library's defaults, which is the usual way to obtain a factory.
+     *
+     * @return a new builder
+     */
+    public static FlockYamlFactoryBuilder builder() {
+        return new FlockYamlFactoryBuilder();
     }
 
     @Override
