@@ -13,11 +13,13 @@ on:
 
 jobs:
   build:
+    # The floating label on purpose, matching jmsfx: CI is where a new runner image's problems should
+    # surface, so that a release never meets one for the first time. release.yml pins its image instead.
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - name: Set up JDK 25
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v5
       with:
         java-version: '25'
         distribution: 'temurin'

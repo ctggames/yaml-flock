@@ -33,15 +33,21 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-latest
+    # Pinned rather than floating, matching jmsfx: a release should build on a known image rather than on
+    # whatever the label points at that week, and maven.yml already runs on the floating label so a new
+    # image's problems surface in CI first. Bump this deliberately.
+    runs-on: ubuntu-24.04
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - name: Set up JDK 25
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v5
       with:
         java-version: '25'
         distribution: 'temurin'
         cache: 'maven'
+        # Writes a settings.xml carrying a 'central' server whose credentials come from the environment,
+        # and imports the signing key. The publishing plugin resolves that server before it does anything
+        # else, so without this the build fails on a null server rather than on a rejected upload.
         server-id: central
         server-username: MAVEN_USERNAME
         server-password: MAVEN_PASSWORD
