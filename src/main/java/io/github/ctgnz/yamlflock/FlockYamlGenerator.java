@@ -131,12 +131,16 @@ public class FlockYamlGenerator extends YAMLGenerator {
 
     @Override
     public void writeString(String text) throws IOException, JsonGenerationException {
-        if (forcesQuotes()) {
-            disable(Feature.MINIMIZE_QUOTES);
+        if (!forcesQuotes()) {
             super.writeString(text);
-            enable(Feature.MINIMIZE_QUOTES);
-        } else {
+            return;
+        }
+        boolean minimizing = isEnabled(Feature.MINIMIZE_QUOTES);
+        disable(Feature.MINIMIZE_QUOTES);
+        try {
             super.writeString(text);
+        } finally {
+            configure(Feature.MINIMIZE_QUOTES, minimizing);
         }
     }
 
