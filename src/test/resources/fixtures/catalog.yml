@@ -1,0 +1,771 @@
+name: Ctgnz Reference Library
+established: 1987
+foundingAcquisition:
+  format: HARDBACK
+  pages: 412
+  published: 1987
+books:
+- details: {isbn: "0000000000", title: "Structure and Interpretation: An Eternal Golden Braid", year: 1890}
+  genres: [FICTION]
+  authors:
+  - {name: Douglas Hofstadter, sortKey: '0001', born: 1890}
+  editions:
+    first: {format: HARDBACK, pages: 180, published: 1890}
+    reprint: {format: PAPERBACK, pages: 190, published: 1950}
+- details: {isbn: "0000079191", title: "The Histories: An Eternal Golden Braid", year: 1897}
+  genres: [PHILOSOPHY, MATHEMATICS]
+  authors:
+  - {name: Herodotus, sortKey: '0002', born: 1901}
+  - {name: Christopher Alexander, sortKey: '0053', born: 1912}
+  editions:
+    first: {format: PAPERBACK, pages: 193, published: 1897}
+- details: {isbn: "0000158382", title: "Godel Escher Bach: An Eternal Golden Braid", year: 1904}
+  genres: [MATHEMATICS, HISTORY, REFERENCE]
+  authors:
+  - {name: Christopher Alexander, sortKey: '0003', born: 1912}
+  editions:
+    first: {format: EBOOK, pages: 206, published: 1904}
+    reprint: {format: HARDBACK, pages: 212, published: 1956}
+- details: {isbn: "0000237573", title: "A Pattern Language: An Eternal Golden Braid", year: 1911}
+  genres: [HISTORY]
+  authors:
+  - {name: Frances Yates, sortKey: '0004', born: 1923}
+  - {name: George Spencer-Brown, sortKey: '0055', born: 1934}
+  editions:
+    first: {format: HARDBACK, pages: 219, published: 1911}
+- details: {isbn: "0000316764", title: "The Art of Memory: An Eternal Golden Braid", year: 1918}
+  genres: [REFERENCE, FICTION]
+  authors:
+  - {name: George Spencer-Brown, sortKey: '0005', born: 1934}
+  editions:
+    first: {format: PAPERBACK, pages: 232, published: 1918}
+    reprint: {format: EBOOK, pages: 234, published: 1962}
+- details: {isbn: "0000395955", title: "Laws of Form: An Eternal Golden Braid", year: 1925}
+  genres: [FICTION, PHILOSOPHY, MATHEMATICS]
+  authors:
+  - {name: Nicholson Baker, sortKey: '0006', born: 1945}
+  - {name: Vladimir Nabokov, sortKey: '0057', born: 1956}
+  editions:
+    first: {format: EBOOK, pages: 245, published: 1925}
+- details: {isbn: "0000475146", title: "The Mezzanine: An Eternal Golden Braid", year: 1932}
+  genres: [PHILOSOPHY]
+  authors:
+  - {name: Vladimir Nabokov, sortKey: '0007', born: 1956}
+  editions:
+    first: {format: HARDBACK, pages: 258, published: 1932}
+    reprint: {format: PAPERBACK, pages: 256, published: 1968}
+- details: {isbn: "0000554330", title: "Pale Fire: An Eternal Golden Braid", year: 1939}
+  genres: [MATHEMATICS, HISTORY]
+  authors:
+  - {name: Jorge Luis Borges, sortKey: '0008', born: 1967}
+  - {name: W G Sebald, sortKey: '0059', born: 1978}
+  editions:
+    first: {format: PAPERBACK, pages: 271, published: 1939}
+- details: {isbn: "0000633521", title: "Labyrinths: An Eternal Golden Braid", year: 1946}
+  genres: [HISTORY, REFERENCE, FICTION]
+  authors:
+  - {name: W G Sebald, sortKey: '0009', born: 1978}
+  editions:
+    first: {format: EBOOK, pages: 284, published: 1946}
+    reprint: {format: HARDBACK, pages: 278, published: 1974}
+- details: {isbn: "000071271X", title: "The Rings of Saturn: An Eternal Golden Braid", year: 1953}
+  genres: [REFERENCE]
+  authors:
+  - {name: Harold Abelson, sortKey: '0010', born: 1989}
+  - {name: Douglas Hofstadter, sortKey: '0051', born: 1890}
+  editions:
+    first: {format: HARDBACK, pages: 297, published: 1953}
+- details: {isbn: "0000791903", title: "Structure and Interpretation and Other Writings", year: 1960}
+  genres: [FICTION, PHILOSOPHY]
+  authors:
+  - {name: Douglas Hofstadter, sortKey: '0001', born: 1890}
+  editions:
+    first: {format: PAPERBACK, pages: 310, published: 1960}
+    reprint: {format: EBOOK, pages: 300, published: 1980}
+- details: {isbn: "0000871094", title: "The Histories and Other Writings", year: 1967}
+  genres: [PHILOSOPHY, MATHEMATICS, HISTORY]
+  authors:
+  - {name: Herodotus, sortKey: '0002', born: 1901}
+  - {name: Christopher Alexander, sortKey: '0053', born: 1912}
+  editions:
+    first: {format: EBOOK, pages: 323, published: 1967}
+- details: {isbn: "0000950285", title: "Godel Escher Bach and Other Writings", year: 1974}
+  genres: [MATHEMATICS]
+  authors:
+  - {name: Christopher Alexander, sortKey: '0003', born: 1912}
+  editions:
+    first: {format: HARDBACK, pages: 336, published: 1974}
+    reprint: {format: PAPERBACK, pages: 322, published: 1986}
+- details: {isbn: "0001029476", title: "A Pattern Language and Other Writings", year: 1981}
+  genres: [HISTORY, REFERENCE]
+  authors:
+  - {name: Frances Yates, sortKey: '0004', born: 1923}
+  - {name: George Spencer-Brown, sortKey: '0055', born: 1934}
+  editions:
+    first: {format: PAPERBACK, pages: 349, published: 1981}
+- details: {isbn: "0001108660", title: "The Art of Memory and Other Writings", year: 1988}
+  genres: [REFERENCE, FICTION, PHILOSOPHY]
+  authors:
+  - {name: George Spencer-Brown, sortKey: '0005', born: 1934}
+  editions:
+    first: {format: EBOOK, pages: 362, published: 1988}
+    reprint: {format: HARDBACK, pages: 344, published: 1992}
+- details: {isbn: "0001187851", title: "Laws of Form and Other Writings", year: 1995}
+  genres: [FICTION]
+  authors:
+  - {name: Nicholson Baker, sortKey: '0006', born: 1945}
+  - {name: Vladimir Nabokov, sortKey: '0057', born: 1956}
+  editions:
+    first: {format: HARDBACK, pages: 375, published: 1995}
+- details: {isbn: "0001267042", title: "The Mezzanine and Other Writings", year: 2002}
+  genres: [PHILOSOPHY, MATHEMATICS]
+  authors:
+  - {name: Vladimir Nabokov, sortKey: '0007', born: 1956}
+  editions:
+    first: {format: PAPERBACK, pages: 388, published: 2002}
+    reprint: {format: EBOOK, pages: 366, published: 1998}
+- details: {isbn: "0001346233", title: "Pale Fire and Other Writings", year: 2009}
+  genres: [MATHEMATICS, HISTORY, REFERENCE]
+  authors:
+  - {name: Jorge Luis Borges, sortKey: '0008', born: 1967}
+  - {name: W G Sebald, sortKey: '0059', born: 1978}
+  editions:
+    first: {format: EBOOK, pages: 401, published: 2009}
+- details: {isbn: "0001425424", title: "Labyrinths and Other Writings", year: 2016}
+  genres: [HISTORY]
+  authors:
+  - {name: W G Sebald, sortKey: '0009', born: 1978}
+  editions:
+    first: {format: HARDBACK, pages: 414, published: 2016}
+    reprint: {format: PAPERBACK, pages: 388, published: 2004}
+- details: {isbn: "000150461X", title: "The Rings of Saturn and Other Writings", year: 1893}
+  genres: [REFERENCE, FICTION]
+  authors:
+  - {name: Harold Abelson, sortKey: '0010', born: 1989}
+  - {name: Douglas Hofstadter, sortKey: '0051', born: 1890}
+  editions:
+    first: {format: PAPERBACK, pages: 427, published: 1893}
+- details: {isbn: "0001583806", title: "Structure and Interpretation: Volume II", year: 1900}
+  genres: [FICTION, PHILOSOPHY, MATHEMATICS]
+  authors:
+  - {name: Douglas Hofstadter, sortKey: '0001', born: 1890}
+  editions:
+    first: {format: EBOOK, pages: 440, published: 1900}
+    reprint: {format: HARDBACK, pages: 410, published: 2010}
+- details: {isbn: "0001662990", title: "The Histories: Volume II", year: 1907}
+  genres: [PHILOSOPHY]
+  authors:
+  - {name: Herodotus, sortKey: '0002', born: 1901}
+  - {name: Christopher Alexander, sortKey: '0053', born: 1912}
+  editions:
+    first: {format: HARDBACK, pages: 453, published: 1907}
+- details: {isbn: "0001742181", title: "Godel Escher Bach: Volume II", year: 1914}
+  genres: [MATHEMATICS, HISTORY]
+  authors:
+  - {name: Christopher Alexander, sortKey: '0003', born: 1912}
+  editions:
+    first: {format: PAPERBACK, pages: 466, published: 1914}
+    reprint: {format: EBOOK, pages: 432, published: 2016}
+- details: {isbn: "0001821372", title: "A Pattern Language: Volume II", year: 1921}
+  genres: [HISTORY, REFERENCE, FICTION]
+  authors:
+  - {name: Frances Yates, sortKey: '0004', born: 1923}
+  - {name: George Spencer-Brown, sortKey: '0055', born: 1934}
+  editions:
+    first: {format: EBOOK, pages: 479, published: 1921}
+- details: {isbn: "0001900563", title: "The Art of Memory: Volume II", year: 1928}
+  genres: [REFERENCE]
+  authors:
+  - {name: George Spencer-Brown, sortKey: '0005', born: 1934}
+  editions:
+    first: {format: HARDBACK, pages: 492, published: 1928}
+    reprint: {format: PAPERBACK, pages: 454, published: 1952}
+- details: {isbn: "0001979754", title: "Laws of Form: Volume II", year: 1935}
+  genres: [FICTION, PHILOSOPHY]
+  authors:
+  - {name: Nicholson Baker, sortKey: '0006', born: 1945}
+  - {name: Vladimir Nabokov, sortKey: '0057', born: 1956}
+  editions:
+    first: {format: PAPERBACK, pages: 505, published: 1935}
+- details: {isbn: "0002058945", title: "The Mezzanine: Volume II", year: 1942}
+  genres: [PHILOSOPHY, MATHEMATICS, HISTORY]
+  authors:
+  - {name: Vladimir Nabokov, sortKey: '0007', born: 1956}
+  editions:
+    first: {format: EBOOK, pages: 518, published: 1942}
+    reprint: {format: HARDBACK, pages: 476, published: 1958}
+- details: {isbn: "0002138136", title: "Pale Fire: Volume II", year: 1949}
+  genres: [MATHEMATICS]
+  authors:
+  - {name: Jorge Luis Borges, sortKey: '0008', born: 1967}
+  - {name: W G Sebald, sortKey: '0059', born: 1978}
+  editions:
+    first: {format: HARDBACK, pages: 531, published: 1949}
+- details: {isbn: "0002217320", title: "Labyrinths: Volume II", year: 1956}
+  genres: [HISTORY, REFERENCE]
+  authors:
+  - {name: W G Sebald, sortKey: '0009', born: 1978}
+  editions:
+    first: {format: PAPERBACK, pages: 544, published: 1956}
+    reprint: {format: EBOOK, pages: 498, published: 1964}
+- details: {isbn: "000229651X", title: "The Rings of Saturn: Volume II", year: 1963}
+  genres: [REFERENCE, FICTION, PHILOSOPHY]
+  authors:
+  - {name: Harold Abelson, sortKey: '0010', born: 1989}
+  - {name: Douglas Hofstadter, sortKey: '0051', born: 1890}
+  editions:
+    first: {format: EBOOK, pages: 557, published: 1963}
+- details: {isbn: "0002375702", title: "Structure and Interpretation", year: 1970}
+  genres: [FICTION]
+  authors:
+  - {name: Douglas Hofstadter, sortKey: '0001', born: 1890}
+  editions:
+    first: {format: HARDBACK, pages: 570, published: 1970}
+    reprint: {format: PAPERBACK, pages: 520, published: 1970}
+- details: {isbn: "0002454893", title: "The Histories", year: 1977}
+  genres: [PHILOSOPHY, MATHEMATICS]
+  authors:
+  - {name: Herodotus, sortKey: '0002', born: 1901}
+  - {name: Christopher Alexander, sortKey: '0053', born: 1912}
+  editions:
+    first: {format: PAPERBACK, pages: 583, published: 1977}
+- details: {isbn: "0002534084", title: "Godel Escher Bach", year: 1984}
+  genres: [MATHEMATICS, HISTORY, REFERENCE]
+  authors:
+  - {name: Christopher Alexander, sortKey: '0003', born: 1912}
+  editions:
+    first: {format: EBOOK, pages: 596, published: 1984}
+    reprint: {format: HARDBACK, pages: 542, published: 1976}
+- details: {isbn: "0002613275", title: "A Pattern Language", year: 1991}
+  genres: [HISTORY]
+  authors:
+  - {name: Frances Yates, sortKey: '0004', born: 1923}
+  - {name: George Spencer-Brown, sortKey: '0055', born: 1934}
+  editions:
+    first: {format: HARDBACK, pages: 609, published: 1991}
+- details: {isbn: "0002692466", title: "The Art of Memory", year: 1998}
+  genres: [REFERENCE, FICTION]
+  authors:
+  - {name: George Spencer-Brown, sortKey: '0005', born: 1934}
+  editions:
+    first: {format: PAPERBACK, pages: 622, published: 1998}
+    reprint: {format: EBOOK, pages: 564, published: 1982}
+- details: {isbn: "0002771650", title: "Laws of Form", year: 2005}
+  genres: [FICTION, PHILOSOPHY, MATHEMATICS]
+  authors:
+  - {name: Nicholson Baker, sortKey: '0006', born: 1945}
+  - {name: Vladimir Nabokov, sortKey: '0057', born: 1956}
+  editions:
+    first: {format: EBOOK, pages: 635, published: 2005}
+- details: {isbn: "0002850841", title: "The Mezzanine", year: 2012}
+  genres: [PHILOSOPHY]
+  authors:
+  - {name: Vladimir Nabokov, sortKey: '0007', born: 1956}
+  editions:
+    first: {format: HARDBACK, pages: 648, published: 2012}
+    reprint: {format: PAPERBACK, pages: 586, published: 1988}
+- details: {isbn: "0002930032", title: "Pale Fire", year: 2019}
+  genres: [MATHEMATICS, HISTORY]
+  authors:
+  - {name: Jorge Luis Borges, sortKey: '0008', born: 1967}
+  - {name: W G Sebald, sortKey: '0059', born: 1978}
+  editions:
+    first: {format: PAPERBACK, pages: 661, published: 2019}
+- details: {isbn: "0003009223", title: "Labyrinths", year: 1896}
+  genres: [HISTORY, REFERENCE, FICTION]
+  authors:
+  - {name: W G Sebald, sortKey: '0009', born: 1978}
+  editions:
+    first: {format: EBOOK, pages: 674, published: 1896}
+    reprint: {format: HARDBACK, pages: 608, published: 1994}
+- details: {isbn: "000308841X", title: "The Rings of Saturn", year: 1903}
+  genres: [REFERENCE]
+  authors:
+  - {name: Harold Abelson, sortKey: '0010', born: 1989}
+  - {name: Douglas Hofstadter, sortKey: '0051', born: 1890}
+  editions:
+    first: {format: HARDBACK, pages: 687, published: 1903}
+- details: {isbn: "0003167605", title: "Structure and Interpretation (Revised)", year: 1910}
+  genres: [FICTION, PHILOSOPHY]
+  authors:
+  - {name: Douglas Hofstadter, sortKey: '0001', born: 1890}
+  editions:
+    first: {format: PAPERBACK, pages: 700, published: 1910}
+    reprint: {format: EBOOK, pages: 630, published: 2000}
+- details: {isbn: "0003246796", title: "The Histories (Revised)", year: 1917}
+  genres: [PHILOSOPHY, MATHEMATICS, HISTORY]
+  authors:
+  - {name: Herodotus, sortKey: '0002', born: 1901}
+  - {name: Christopher Alexander, sortKey: '0053', born: 1912}
+  editions:
+    first: {format: EBOOK, pages: 713, published: 1917}
+- details: {isbn: "0003325980", title: "Godel Escher Bach (Revised)", year: 1924}
+  genres: [MATHEMATICS]
+  authors:
+  - {name: Christopher Alexander, sortKey: '0003', born: 1912}
+  editions:
+    first: {format: HARDBACK, pages: 726, published: 1924}
+    reprint: {format: PAPERBACK, pages: 652, published: 2006}
+- details: {isbn: "0003405171", title: "A Pattern Language (Revised)", year: 1931}
+  genres: [HISTORY, REFERENCE]
+  authors:
+  - {name: Frances Yates, sortKey: '0004', born: 1923}
+  - {name: George Spencer-Brown, sortKey: '0055', born: 1934}
+  editions:
+    first: {format: PAPERBACK, pages: 739, published: 1931}
+- details: {isbn: "0003484362", title: "The Art of Memory (Revised)", year: 1938}
+  genres: [REFERENCE, FICTION, PHILOSOPHY]
+  authors:
+  - {name: George Spencer-Brown, sortKey: '0005', born: 1934}
+  editions:
+    first: {format: EBOOK, pages: 752, published: 1938}
+    reprint: {format: HARDBACK, pages: 674, published: 2012}
+- details: {isbn: "0003563553", title: "Laws of Form (Revised)", year: 1945}
+  genres: [FICTION]
+  authors:
+  - {name: Nicholson Baker, sortKey: '0006', born: 1945}
+  - {name: Vladimir Nabokov, sortKey: '0057', born: 1956}
+  editions:
+    first: {format: HARDBACK, pages: 765, published: 1945}
+- details: {isbn: "0003642744", title: "The Mezzanine (Revised)", year: 1952}
+  genres: [PHILOSOPHY, MATHEMATICS]
+  authors:
+  - {name: Vladimir Nabokov, sortKey: '0007', born: 1956}
+  editions:
+    first: {format: PAPERBACK, pages: 778, published: 1952}
+    reprint: {format: EBOOK, pages: 696, published: 2018}
+- details: {isbn: "0003721935", title: "Pale Fire (Revised)", year: 1959}
+  genres: [MATHEMATICS, HISTORY, REFERENCE]
+  authors:
+  - {name: Jorge Luis Borges, sortKey: '0008', born: 1967}
+  - {name: W G Sebald, sortKey: '0059', born: 1978}
+  editions:
+    first: {format: EBOOK, pages: 791, published: 1959}
+- details: {isbn: "0003801126", title: "Labyrinths (Revised)", year: 1966}
+  genres: [HISTORY]
+  authors:
+  - {name: W G Sebald, sortKey: '0009', born: 1978}
+  editions:
+    first: {format: HARDBACK, pages: 804, published: 1966}
+    reprint: {format: PAPERBACK, pages: 718, published: 1954}
+- details: {isbn: "000388031X", title: "The Rings of Saturn (Revised)", year: 1973}
+  genres: [REFERENCE, FICTION]
+  authors:
+  - {name: Harold Abelson, sortKey: '0010', born: 1989}
+  - {name: Douglas Hofstadter, sortKey: '0051', born: 1890}
+  editions:
+    first: {format: PAPERBACK, pages: 817, published: 1973}
+- details: {isbn: "0003959501", title: "Structure and Interpretation: L'Etre et le Neant", year: 1980}
+  genres: [FICTION, PHILOSOPHY, MATHEMATICS]
+  authors:
+  - {name: Douglas Hofstadter, sortKey: '0001', born: 1890}
+  editions:
+    first: {format: EBOOK, pages: 830, published: 1980}
+    reprint: {format: HARDBACK, pages: 740, published: 1960}
+- details: {isbn: "0004038692", title: "The Histories: L'Etre et le Neant", year: 1987}
+  genres: [PHILOSOPHY]
+  authors:
+  - {name: Herodotus, sortKey: '0002', born: 1901}
+  - {name: Christopher Alexander, sortKey: '0053', born: 1912}
+  editions:
+    first: {format: HARDBACK, pages: 843, published: 1987}
+- details: {isbn: "0004117883", title: "Godel Escher Bach: L'Etre et le Neant", year: 1994}
+  genres: [MATHEMATICS, HISTORY]
+  authors:
+  - {name: Christopher Alexander, sortKey: '0003', born: 1912}
+  editions:
+    first: {format: PAPERBACK, pages: 856, published: 1994}
+    reprint: {format: EBOOK, pages: 762, published: 1966}
+- details: {isbn: "0004197074", title: "A Pattern Language: L'Etre et le Neant", year: 2001}
+  genres: [HISTORY, REFERENCE, FICTION]
+  authors:
+  - {name: Frances Yates, sortKey: '0004', born: 1923}
+  - {name: George Spencer-Brown, sortKey: '0055', born: 1934}
+  editions:
+    first: {format: EBOOK, pages: 869, published: 2001}
+- details: {isbn: "0004276265", title: "The Art of Memory: L'Etre et le Neant", year: 2008}
+  genres: [REFERENCE]
+  authors:
+  - {name: George Spencer-Brown, sortKey: '0005', born: 1934}
+  editions:
+    first: {format: HARDBACK, pages: 182, published: 2008}
+    reprint: {format: PAPERBACK, pages: 784, published: 1972}
+- details: {isbn: "0004355456", title: "Laws of Form: L'Etre et le Neant", year: 2015}
+  genres: [FICTION, PHILOSOPHY]
+  authors:
+  - {name: Nicholson Baker, sortKey: '0006', born: 1945}
+  - {name: Vladimir Nabokov, sortKey: '0057', born: 1956}
+  editions:
+    first: {format: PAPERBACK, pages: 195, published: 2015}
+- details: {isbn: "0004434640", title: "The Mezzanine: L'Etre et le Neant", year: 1892}
+  genres: [PHILOSOPHY, MATHEMATICS, HISTORY]
+  authors:
+  - {name: Vladimir Nabokov, sortKey: '0007', born: 1956}
+  editions:
+    first: {format: EBOOK, pages: 208, published: 1892}
+    reprint: {format: HARDBACK, pages: 806, published: 1978}
+- details: {isbn: "0004513831", title: "Pale Fire: L'Etre et le Neant", year: 1899}
+  genres: [MATHEMATICS]
+  authors:
+  - {name: Jorge Luis Borges, sortKey: '0008', born: 1967}
+  - {name: W G Sebald, sortKey: '0059', born: 1978}
+  editions:
+    first: {format: HARDBACK, pages: 221, published: 1899}
+- details: {isbn: "0004593022", title: "Labyrinths: L'Etre et le Neant", year: 1906}
+  genres: [HISTORY, REFERENCE]
+  authors:
+  - {name: W G Sebald, sortKey: '0009', born: 1978}
+  editions:
+    first: {format: PAPERBACK, pages: 234, published: 1906}
+    reprint: {format: EBOOK, pages: 828, published: 1984}
+- details: {isbn: "000467221X", title: "The Rings of Saturn: L'Etre et le Neant", year: 1913}
+  genres: [REFERENCE, FICTION, PHILOSOPHY]
+  authors:
+  - {name: Harold Abelson, sortKey: '0010', born: 1989}
+  - {name: Douglas Hofstadter, sortKey: '0051', born: 1890}
+  editions:
+    first: {format: EBOOK, pages: 247, published: 1913}
+- details: {isbn: "0004751404", title: "Structure and Interpretation @ the Edge", year: 1920}
+  genres: [FICTION]
+  authors:
+  - {name: Douglas Hofstadter, sortKey: '0001', born: 1890}
+  editions:
+    first: {format: HARDBACK, pages: 260, published: 1920}
+    reprint: {format: PAPERBACK, pages: 850, published: 1990}
+- details: {isbn: "0004830595", title: "The Histories @ the Edge", year: 1927}
+  genres: [PHILOSOPHY, MATHEMATICS]
+  authors:
+  - {name: Herodotus, sortKey: '0002', born: 1901}
+  - {name: Christopher Alexander, sortKey: '0053', born: 1912}
+  editions:
+    first: {format: PAPERBACK, pages: 273, published: 1927}
+- details: {isbn: "0004909786", title: "Godel Escher Bach @ the Edge", year: 1934}
+  genres: [MATHEMATICS, HISTORY, REFERENCE]
+  authors:
+  - {name: Christopher Alexander, sortKey: '0003', born: 1912}
+  editions:
+    first: {format: EBOOK, pages: 286, published: 1934}
+    reprint: {format: HARDBACK, pages: 872, published: 1996}
+- details: {isbn: "0004988970", title: "A Pattern Language @ the Edge", year: 1941}
+  genres: [HISTORY]
+  authors:
+  - {name: Frances Yates, sortKey: '0004', born: 1923}
+  - {name: George Spencer-Brown, sortKey: '0055', born: 1934}
+  editions:
+    first: {format: HARDBACK, pages: 299, published: 1941}
+- details: {isbn: "0005068161", title: "The Art of Memory @ the Edge", year: 1948}
+  genres: [REFERENCE, FICTION]
+  authors:
+  - {name: George Spencer-Brown, sortKey: '0005', born: 1934}
+  editions:
+    first: {format: PAPERBACK, pages: 312, published: 1948}
+    reprint: {format: EBOOK, pages: 194, published: 2002}
+- details: {isbn: "0005147352", title: "Laws of Form @ the Edge", year: 1955}
+  genres: [FICTION, PHILOSOPHY, MATHEMATICS]
+  authors:
+  - {name: Nicholson Baker, sortKey: '0006', born: 1945}
+  - {name: Vladimir Nabokov, sortKey: '0057', born: 1956}
+  editions:
+    first: {format: EBOOK, pages: 325, published: 1955}
+- details: {isbn: "0005226543", title: "The Mezzanine @ the Edge", year: 1962}
+  genres: [PHILOSOPHY]
+  authors:
+  - {name: Vladimir Nabokov, sortKey: '0007', born: 1956}
+  editions:
+    first: {format: HARDBACK, pages: 338, published: 1962}
+    reprint: {format: PAPERBACK, pages: 216, published: 2008}
+- details: {isbn: "0005305734", title: "Pale Fire @ the Edge", year: 1969}
+  genres: [MATHEMATICS, HISTORY]
+  authors:
+  - {name: Jorge Luis Borges, sortKey: '0008', born: 1967}
+  - {name: W G Sebald, sortKey: '0059', born: 1978}
+  editions:
+    first: {format: PAPERBACK, pages: 351, published: 1969}
+- details: {isbn: "0005384925", title: "Labyrinths @ the Edge", year: 1976}
+  genres: [HISTORY, REFERENCE, FICTION]
+  authors:
+  - {name: W G Sebald, sortKey: '0009', born: 1978}
+  editions:
+    first: {format: EBOOK, pages: 364, published: 1976}
+    reprint: {format: HARDBACK, pages: 238, published: 2014}
+- details: {isbn: "000546411X", title: "The Rings of Saturn @ the Edge", year: 1983}
+  genres: [REFERENCE]
+  authors:
+  - {name: Harold Abelson, sortKey: '0010', born: 1989}
+  - {name: Douglas Hofstadter, sortKey: '0051', born: 1890}
+  editions:
+    first: {format: HARDBACK, pages: 377, published: 1983}
+- details: {isbn: "0005543300", title: "Structure and Interpretation: Gedel, Escher, Bach", year: 1990}
+  genres: [FICTION, PHILOSOPHY]
+  authors:
+  - {name: Douglas Hofstadter, sortKey: '0001', born: 1890}
+  editions:
+    first: {format: PAPERBACK, pages: 390, published: 1990}
+    reprint: {format: EBOOK, pages: 260, published: 1950}
+- details: {isbn: "0005622491", title: "The Histories: Gedel, Escher, Bach", year: 1997}
+  genres: [PHILOSOPHY, MATHEMATICS, HISTORY]
+  authors:
+  - {name: Herodotus, sortKey: '0002', born: 1901}
+  - {name: Christopher Alexander, sortKey: '0053', born: 1912}
+  editions:
+    first: {format: EBOOK, pages: 403, published: 1997}
+- details: {isbn: "0005701682", title: "Godel Escher Bach: Gedel, Escher, Bach", year: 2004}
+  genres: [MATHEMATICS]
+  authors:
+  - {name: Christopher Alexander, sortKey: '0003', born: 1912}
+  editions:
+    first: {format: HARDBACK, pages: 416, published: 2004}
+    reprint: {format: PAPERBACK, pages: 282, published: 1956}
+- details: {isbn: "0005780873", title: "A Pattern Language: Gedel, Escher, Bach", year: 2011}
+  genres: [HISTORY, REFERENCE]
+  authors:
+  - {name: Frances Yates, sortKey: '0004', born: 1923}
+  - {name: George Spencer-Brown, sortKey: '0055', born: 1934}
+  editions:
+    first: {format: PAPERBACK, pages: 429, published: 2011}
+- details: {isbn: "0005860064", title: "The Art of Memory: Gedel, Escher, Bach", year: 2018}
+  genres: [REFERENCE, FICTION, PHILOSOPHY]
+  authors:
+  - {name: George Spencer-Brown, sortKey: '0005', born: 1934}
+  editions:
+    first: {format: EBOOK, pages: 442, published: 2018}
+    reprint: {format: HARDBACK, pages: 304, published: 1962}
+- details: {isbn: "0005939255", title: "Laws of Form: Gedel, Escher, Bach", year: 1895}
+  genres: [FICTION]
+  authors:
+  - {name: Nicholson Baker, sortKey: '0006', born: 1945}
+  - {name: Vladimir Nabokov, sortKey: '0057', born: 1956}
+  editions:
+    first: {format: HARDBACK, pages: 455, published: 1895}
+- details: {isbn: "0006018446", title: "The Mezzanine: Gedel, Escher, Bach", year: 1902}
+  genres: [PHILOSOPHY, MATHEMATICS]
+  authors:
+  - {name: Vladimir Nabokov, sortKey: '0007', born: 1956}
+  editions:
+    first: {format: PAPERBACK, pages: 468, published: 1902}
+    reprint: {format: EBOOK, pages: 326, published: 1968}
+- details: {isbn: "0006097630", title: "Pale Fire: Gedel, Escher, Bach", year: 1909}
+  genres: [MATHEMATICS, HISTORY, REFERENCE]
+  authors:
+  - {name: Jorge Luis Borges, sortKey: '0008', born: 1967}
+  - {name: W G Sebald, sortKey: '0059', born: 1978}
+  editions:
+    first: {format: EBOOK, pages: 481, published: 1909}
+- details: {isbn: "0006176821", title: "Labyrinths: Gedel, Escher, Bach", year: 1916}
+  genres: [HISTORY]
+  authors:
+  - {name: W G Sebald, sortKey: '0009', born: 1978}
+  editions:
+    first: {format: HARDBACK, pages: 494, published: 1916}
+    reprint: {format: PAPERBACK, pages: 348, published: 1974}
+- details: {isbn: "000625601X", title: "The Rings of Saturn: Gedel, Escher, Bach", year: 1923}
+  genres: [REFERENCE, FICTION]
+  authors:
+  - {name: Harold Abelson, sortKey: '0010', born: 1989}
+  - {name: Douglas Hofstadter, sortKey: '0051', born: 1890}
+  editions:
+    first: {format: PAPERBACK, pages: 507, published: 1923}
+- details: {isbn: "0006335203", title: "Structure and Interpretation - 雪国", year: 1930}
+  genres: [FICTION, PHILOSOPHY, MATHEMATICS]
+  authors:
+  - {name: Douglas Hofstadter, sortKey: '0001', born: 1890}
+  editions:
+    first: {format: EBOOK, pages: 520, published: 1930}
+    reprint: {format: HARDBACK, pages: 370, published: 1980}
+- details: {isbn: "0006414394", title: "The Histories - 雪国", year: 1937}
+  genres: [PHILOSOPHY]
+  authors:
+  - {name: Herodotus, sortKey: '0002', born: 1901}
+  - {name: Christopher Alexander, sortKey: '0053', born: 1912}
+  editions:
+    first: {format: HARDBACK, pages: 533, published: 1937}
+- details: {isbn: "0006493585", title: "Godel Escher Bach - 雪国", year: 1944}
+  genres: [MATHEMATICS, HISTORY]
+  authors:
+  - {name: Christopher Alexander, sortKey: '0003', born: 1912}
+  editions:
+    first: {format: PAPERBACK, pages: 546, published: 1944}
+    reprint: {format: EBOOK, pages: 392, published: 1986}
+- details: {isbn: "0006572776", title: "A Pattern Language - 雪国", year: 1951}
+  genres: [HISTORY, REFERENCE, FICTION]
+  authors:
+  - {name: Frances Yates, sortKey: '0004', born: 1923}
+  - {name: George Spencer-Brown, sortKey: '0055', born: 1934}
+  editions:
+    first: {format: EBOOK, pages: 559, published: 1951}
+- details: {isbn: "0006651960", title: "The Art of Memory - 雪国", year: 1958}
+  genres: [REFERENCE]
+  authors:
+  - {name: George Spencer-Brown, sortKey: '0005', born: 1934}
+  editions:
+    first: {format: HARDBACK, pages: 572, published: 1958}
+    reprint: {format: PAPERBACK, pages: 414, published: 1992}
+- details: {isbn: "0006731151", title: "Laws of Form - 雪国", year: 1965}
+  genres: [FICTION, PHILOSOPHY]
+  authors:
+  - {name: Nicholson Baker, sortKey: '0006', born: 1945}
+  - {name: Vladimir Nabokov, sortKey: '0057', born: 1956}
+  editions:
+    first: {format: PAPERBACK, pages: 585, published: 1965}
+- details: {isbn: "0006810342", title: "The Mezzanine - 雪国", year: 1972}
+  genres: [PHILOSOPHY, MATHEMATICS, HISTORY]
+  authors:
+  - {name: Vladimir Nabokov, sortKey: '0007', born: 1956}
+  editions:
+    first: {format: EBOOK, pages: 598, published: 1972}
+    reprint: {format: HARDBACK, pages: 436, published: 1998}
+- details: {isbn: "0006889533", title: "Pale Fire - 雪国", year: 1979}
+  genres: [MATHEMATICS]
+  authors:
+  - {name: Jorge Luis Borges, sortKey: '0008', born: 1967}
+  - {name: W G Sebald, sortKey: '0059', born: 1978}
+  editions:
+    first: {format: HARDBACK, pages: 611, published: 1979}
+- details: {isbn: "0006968724", title: "Labyrinths - 雪国", year: 1986}
+  genres: [HISTORY, REFERENCE]
+  authors:
+  - {name: W G Sebald, sortKey: '0009', born: 1978}
+  editions:
+    first: {format: PAPERBACK, pages: 624, published: 1986}
+    reprint: {format: EBOOK, pages: 458, published: 2004}
+- details: {isbn: "000704791X", title: "The Rings of Saturn - 雪国", year: 1993}
+  genres: [REFERENCE, FICTION, PHILOSOPHY]
+  authors:
+  - {name: Harold Abelson, sortKey: '0010', born: 1989}
+  - {name: Douglas Hofstadter, sortKey: '0051', born: 1890}
+  editions:
+    first: {format: EBOOK, pages: 637, published: 1993}
+- details: {isbn: "0007127106", title: "Structure and Interpretation: A Second Look", year: 2000}
+  genres: [FICTION]
+  authors:
+  - {name: Douglas Hofstadter, sortKey: '0001', born: 1890}
+  editions:
+    first: {format: HARDBACK, pages: 650, published: 2000}
+    reprint: {format: PAPERBACK, pages: 480, published: 2010}
+- details: {isbn: "0007206290", title: "The Histories: A Second Look", year: 2007}
+  genres: [PHILOSOPHY, MATHEMATICS]
+  authors:
+  - {name: Herodotus, sortKey: '0002', born: 1901}
+  - {name: Christopher Alexander, sortKey: '0053', born: 1912}
+  editions:
+    first: {format: PAPERBACK, pages: 663, published: 2007}
+- details: {isbn: "0007285481", title: "Godel Escher Bach: A Second Look", year: 2014}
+  genres: [MATHEMATICS, HISTORY, REFERENCE]
+  authors:
+  - {name: Christopher Alexander, sortKey: '0003', born: 1912}
+  editions:
+    first: {format: EBOOK, pages: 676, published: 2014}
+    reprint: {format: HARDBACK, pages: 502, published: 2016}
+- details: {isbn: "0007364672", title: "A Pattern Language: A Second Look", year: 1891}
+  genres: [HISTORY]
+  authors:
+  - {name: Frances Yates, sortKey: '0004', born: 1923}
+  - {name: George Spencer-Brown, sortKey: '0055', born: 1934}
+  editions:
+    first: {format: HARDBACK, pages: 689, published: 1891}
+- details: {isbn: "0007443863", title: "The Art of Memory: A Second Look", year: 1898}
+  genres: [REFERENCE, FICTION]
+  authors:
+  - {name: George Spencer-Brown, sortKey: '0005', born: 1934}
+  editions:
+    first: {format: PAPERBACK, pages: 702, published: 1898}
+    reprint: {format: EBOOK, pages: 524, published: 1952}
+- details: {isbn: "0007523054", title: "Laws of Form: A Second Look", year: 1905}
+  genres: [FICTION, PHILOSOPHY, MATHEMATICS]
+  authors:
+  - {name: Nicholson Baker, sortKey: '0006', born: 1945}
+  - {name: Vladimir Nabokov, sortKey: '0057', born: 1956}
+  editions:
+    first: {format: EBOOK, pages: 715, published: 1905}
+- details: {isbn: "0007602245", title: "The Mezzanine: A Second Look", year: 1912}
+  genres: [PHILOSOPHY]
+  authors:
+  - {name: Vladimir Nabokov, sortKey: '0007', born: 1956}
+  editions:
+    first: {format: HARDBACK, pages: 728, published: 1912}
+    reprint: {format: PAPERBACK, pages: 546, published: 1958}
+- details: {isbn: "0007681436", title: "Pale Fire: A Second Look", year: 1919}
+  genres: [MATHEMATICS, HISTORY]
+  authors:
+  - {name: Jorge Luis Borges, sortKey: '0008', born: 1967}
+  - {name: W G Sebald, sortKey: '0059', born: 1978}
+  editions:
+    first: {format: PAPERBACK, pages: 741, published: 1919}
+- details: {isbn: "0007760620", title: "Labyrinths: A Second Look", year: 1926}
+  genres: [HISTORY, REFERENCE, FICTION]
+  authors:
+  - {name: W G Sebald, sortKey: '0009', born: 1978}
+  editions:
+    first: {format: EBOOK, pages: 754, published: 1926}
+    reprint: {format: HARDBACK, pages: 568, published: 1964}
+- details: {isbn: "000783981X", title: "The Rings of Saturn: A Second Look", year: 1933}
+  genres: [REFERENCE]
+  authors:
+  - {name: Harold Abelson, sortKey: '0010', born: 1989}
+  - {name: Douglas Hofstadter, sortKey: '0051', born: 1890}
+  editions:
+    first: {format: HARDBACK, pages: 767, published: 1933}
+archive:
+- shelfMark: '001'
+  edition:
+    format: HARDBACK
+    pages: 120
+    published: 1890
+- shelfMark: '012'
+  edition:
+    format: PAPERBACK
+    pages: 157
+    published: 1897
+- shelfMark: '023'
+  edition:
+    format: EBOOK
+    pages: 194
+    published: 1904
+- shelfMark: '034'
+  edition:
+    format: HARDBACK
+    pages: 231
+    published: 1911
+- shelfMark: '045'
+  edition:
+    format: PAPERBACK
+    pages: 268
+    published: 1918
+- shelfMark: '056'
+  edition:
+    format: EBOOK
+    pages: 305
+    published: 1925
+- shelfMark: '067'
+  edition:
+    format: HARDBACK
+    pages: 342
+    published: 1932
+- shelfMark: '078'
+  edition:
+    format: PAPERBACK
+    pages: 379
+    published: 1939
+index:
+  byTitle:
+    structure:
+    - '0000000000'
+    - '0000791903'
+    - '0001583806'
+    histories:
+    - '0000079191'
+    - '0000871094'
+  byAuthor:
+    hofstadter:
+    - '0000000000'
+    - '0002375702'
+    borges:
+    - '0000554330'
+    - '0001346233'
+    - '0002138136'
+  byYear:
+    1890:
+    - '0000000000'
+    1897:
+    - '0000079191'
+    - '0000158382'
