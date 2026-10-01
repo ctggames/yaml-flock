@@ -226,6 +226,8 @@ That also means the semantics here are defined by this project's own scenarios r
 
 ## The specification
 
+**[Read them published at ctgnz.github.io/yaml-flock](https://ctgnz.github.io/yaml-flock/)**, where every scenario and the document it produces can be browsed without cloning anything.
+
 The behaviour above is specified by the Cucumber scenarios in [`src/test/resources/features`](src/test/resources/features), written against a library-catalogue model in [`src/test/java/io/github/ctgnz/yamlflock/catalog`](src/test/java/io/github/ctgnz/yamlflock/catalog). Each scenario asserts a complete document, so they read as worked examples rather than as assertions about internals:
 
 | Feature | Covers |
@@ -237,6 +239,8 @@ The behaviour above is specified by the Cucumber scenarios in [`src/test/resourc
 | `nesting.feature` | the flow-record pattern, and one document using every style at once |
 
 They are the specification in a real sense: this emitter was extracted from two projects that had never exercised the behaviour, so there was no prior output to preserve. The features say what the library does, and the generator is written to satisfy them.
+
+Beyond the scenarios, [`src/test/resources/fixtures/catalog.yml`](src/test/resources/fixtures/catalog.yml) is a hundred-book catalogue, 771 lines, carrying every style at once and the awkward cases deliberately — titles with colons, apostrophes and non-Latin scripts, and ISBNs where quoting turns on a check digit. It is read back byte for byte on every build.
 
 ## Licence
 
