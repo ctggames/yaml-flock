@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.ctgnz</groupId>
+    <artifactId>yaml-flock</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>YAML Flock</name>
+    <description>A Jackson extension for YAML that mixes flow and block style in the same document, chosen per type and per property by annotation rather than globally.</description>
+    <url>https://github.com/ctgnz/yaml-flock</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Colin Sharples</name>
+            <email>ctg@ctg.co.nz</email>
+            <organization>CTG Games Limited</organization>
+            <organizationUrl>https://www.ctg.co.nz</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/ctgnz/yaml-flock.git</connection>
+        <developerConnection>scm:git:ssh://github.com/ctgnz/yaml-flock.git</developerConnection>
+        <url>http://github.com/ctgnz/yaml-flock/tree/master</url>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!--
+            Tracks jmsfx, which is where this emitter is already running against 2.22.2 - so the
+            version is proven rather than chosen. hallux came from 2.15.2 and was upgraded to match
+            before consuming this; see ctgnz/hallux#244 for what that surfaced.
+        -->
+        <jackson.version>2.22.2</jackson.version>
+        <cucumber.version>7.34.8</cucumber.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>6.1.3</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!--
+            jackson-dataformat-yaml brings jackson-core and SnakeYAML transitively, and this library
+            subclasses YAMLGenerator, so the YAML dataformat is not optional to it. databind is needed
+            for the annotation-driven parts, which resolve off the serialised value's class.
+        -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <!--
+            The behaviour of a formatter is its output, so the tests are input/output pairs rather than
+            assertions about internals. Cucumber because a Gherkin scenario with a docstring says
+            "this model produces exactly this YAML" in one readable block, which is both the test and
+            the documentation - and because the report can be published, as foxglove does.
+        -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>2.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <!--
+                        release rather than the source/target pair: it constrains against the platform
+                        API of that version too, where source/target let code compile against a newer
+                        JDK's API and then fail at runtime on the target.
+                    -->
+                    <release>25</release>
+                    <encoding>UTF-8</encoding>
+                    <compilerArgs>
+                        <arg>-Xlint:all</arg>
+                        <arg>-Werror</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- The previous default predates the JUnit Platform entirely and cannot discover Jupiter/Cucumber tests. -->
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.6.0</version>
+            </plugin>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>2.44.5</version>
+                <configuration>
+                    <java>
+                        <importOrder>
+                            <file>${maven.multiModuleProjectDirectory}/config/eclipse.importorder</file>
+                        </importOrder>
+                        <removeUnusedImports/>
+                        <eclipse>
+                            <file>${maven.multiModuleProjectDirectory}/config/eclipse-formatter.xml</file>
+                        </eclipse>
+                    </java>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <phase>verify</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.11.2</version>
+                        <configuration>
+                            <!--
+                                Keep doclint checking syntax, html and references, and drop only
+                                "missing" - an unresolvable {@link} is a real error and javadoc is the
+                                only thing that finds one. jmsfx learned that at the cost of two
+                                re-signed tags; see ctgnz/jmsfx#148.
+                            -->
+                            <doclint>all,-missing</doclint>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>attach-javadoc</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.3.0</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <!--
+                            autoPublish false: a tag stages a validated deployment on the Portal and
+                            publishing stays a deliberate step, so a bad staging is dropped rather than
+                            superseded. Needs GPG_PRIVATE_KEY, GPG_PASSPHRASE, CENTRAL_USERNAME and
+                            CENTRAL_PASSWORD as repository secrets - a workflow copied from a sibling
+                            project brings the names and none of the values, which is what cost jmsfx
+                            2.0.0 two re-signed tags.
+                        -->
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.11.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                            <autoPublish>false</autoPublish>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>
