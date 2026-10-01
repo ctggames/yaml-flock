@@ -73,7 +73,7 @@ That is the whole of it. `FlockYamlFactory.builder()` arrives carrying the setti
 | setting | default | why it is the default |
 | --- | --- | --- |
 | default flow style | `BLOCK` | the fallback for anything the annotations do not inline |
-| line width | 480 | SnakeYAML folds a flow collection wider than this, which reintroduces exactly the unpredictability the annotations exist to remove |
+| line width | 480 | [SnakeYAML](https://bitbucket.org/snakeyaml/snakeyaml) folds a flow collection wider than this, which reintroduces exactly the unpredictability the annotations exist to remove |
 | line break | `UNIX` | see below |
 | pretty flow | `false` | keeps an inlined collection on one line |
 | canonical | `false` | canonical output tags and quotes everything |
