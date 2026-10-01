@@ -1,6 +1,6 @@
 # yaml-flock
 
-A Jackson extension that lets a single YAML document mix **fl**ow and bl**ock** style, chosen property by property, by annotating the model rather than configuring the writer.
+A [Jackson](https://github.com/fasterxml/jackson) extension that lets a single YAML document mix **fl**ow and bl**ock** style, chosen property by property, by annotating the model rather than configuring the writer.
 
 ```yaml
 details: {isbn: "0306406152", title: "Godel Escher Bach", year: 1979}
