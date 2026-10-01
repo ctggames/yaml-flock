@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>yaml-flock</title>
+<style>
+:root {
+  --bg: #fcfcfa;
+  --fg: #22211e;
+  --muted: #6b6860;
+  --rule: #e2dfd7;
+  --accent: #7a5c2e;
+  --code-bg: #f4f2ec;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1917;
+    --fg: #e8e5dd;
+    --muted: #9a958a;
+    --rule: #332f29;
+    --accent: #c9a567;
+    --code-bg: #232120;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 0 16px 4rem;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+main { max-width: 46rem; margin: 0 auto; }
+header { padding: 3.5rem 0 2rem; border-bottom: 1px solid var(--rule); margin-bottom: 2.5rem; }
+h1 { margin: 0 0 .4rem; font-size: 2.6rem; letter-spacing: -.02em; }
+h1 .flow, h1 .block { color: var(--accent); }
+.tagline { margin: 0; font-size: 1.15rem; color: var(--muted); max-width: 34rem; }
+h2 { margin: 2.75rem 0 .75rem; font-size: 1.25rem; letter-spacing: -.01em; }
+p { margin: 0 0 1rem; }
+a { color: var(--accent); }
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: .9rem 1rem;
+  overflow-x: auto;
+  font: 13.5px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  margin: 0 0 1rem;
+}
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .92em; }
+p code, li code { background: var(--code-bg); padding: .1em .35em; border-radius: 3px; }
+.cards { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.25rem 0 0; }
+.card {
+  flex: 1 1 18rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1.1rem 1.2rem;
+  background: var(--code-bg);
+}
+.card h3 { margin: 0 0 .4rem; font-size: 1.02rem; }
+.card p { margin: 0 0 .75rem; font-size: .93rem; color: var(--muted); }
+.card a { font-weight: 600; text-decoration: none; }
+.card a:hover { text-decoration: underline; }
+.meta { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); font-size: .9rem; color: var(--muted); }
+.meta a { margin-right: 1.25rem; }
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <h1>yaml-<span class="flow">fl</span><span class="block">ock</span></h1>
+  <p class="tagline">A Jackson extension that lets a single YAML document mix <strong>fl</strong>ow and bl<strong>ock</strong>
+  style, chosen property by property, by annotating the model rather than configuring the writer.</p>
+</header>
+
+<h2>Why</h2>
+
+<p>YAML earns its place for files that live in source control. It dispenses with the furniture that makes
+JSON too verbose to review — braces, brackets, quotes on every key, commas that a diff flags on the line
+<em>above</em> the one that changed.</p>
+
+<p>Block style still costs something, though. One property per line is exactly right for a Spring
+<code>application.yml</code>, where each line is a single variable. But as soon as the data has real
+structure, that rule turns a screenful of file into mostly blank space. Flow style alone is not the answer
+either: collapse everything and you get long lines that a diff reports as one wholesale change, which is the
+property that made JSON unpleasant in the first place.</p>
+
+<p>Choosing per property gives a middle ground. Values that belong together on one line go on one line;
+structure that deserves a line per entry keeps it. The same book, twenty lines in plain block style, is
+seven here — and it still diffs cleanly, because a changed page count is a changed word on one line.</p>
+
+<pre>details: {isbn: "0306406152", title: "Godel Escher Bach", year: 1979}
+genres: [PHILOSOPHY, MATHEMATICS]
+authors:
+- {name: Douglas Hofstadter, sortKey: '0001', born: 1945}
+editions:
+  first: {format: HARDBACK, pages: 777, published: 1979}
+  anniversary: {format: PAPERBACK, pages: 824, published: 1999}</pre>
+
+<h2>Have a look</h2>
+
+<div class="cards">
+  <div class="card">
+    <h3>The specification</h3>
+    <p>Fifteen scenarios, grouped by what they describe: flow style, block style, collections, forced
+    quoting, and nesting. Each one asserts a complete document, so you can see the YAML each annotation
+    produces rather than read a description of it.</p>
+    <a href="scenarios.html">Read the scenarios &rarr;</a>
+  </div>
+  <div class="card">
+    <h3>A full example</h3>
+    <p>A hundred-book catalogue, 771 lines, carrying every style at once — and the awkward cases on
+    purpose: titles with colons, apostrophes and non-Latin scripts, and ISBNs where quoting turns on a
+    check digit. Read back byte for byte on every build.</p>
+    <a href="https://github.com/ctgnz/yaml-flock/blob/master/src/test/resources/fixtures/catalog.yml">Explore catalog.yml &rarr;</a>
+  </div>
+</div>
+
+<h2>Using it</h2>
+
+<pre>&lt;dependency&gt;
+    &lt;groupId&gt;io.github.ctgnz&lt;/groupId&gt;
+    &lt;artifactId&gt;yaml-flock&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+
+<p>Then one line, because the builder already carries the settings the library needs:</p>
+
+<pre>ObjectMapper mapper = new ObjectMapper(FlockYamlFactory.builder().build());</pre>
+
+<p>Three annotations do the work. <code>@YamlFlowStyle</code> writes a value inline, on a type or on a single
+property — the latter being the only way to inline a collection, since there is no type to annotate on a
+<code>List&lt;Genre&gt;</code>. <code>@YamlBlockStyle</code> is the override, one entry per line.
+<code>@YamlForceQuote</code> always quotes a property, so a column reads the same way on every occurrence
+rather than depending on each value.</p>
+
+<p>Reading needs none of it. YAML style is a presentation choice, so a plain <code>YAMLFactory</code> parses
+anything this writes — which the round-trip test checks rather than asserts.</p>
+
+<p class="meta">
+  <a href="https://github.com/ctgnz/yaml-flock">Source</a>
+  <a href="https://central.sonatype.com/artifact/io.github.ctgnz/yaml-flock">Maven Central</a>
+  <a href="https://github.com/ctgnz/yaml-flock/blob/master/README.md">README</a>
+  <a href="https://github.com/ctgnz/yaml-flock/blob/master/LICENSE">Apache 2.0</a>
+</p>
+
+</main>
+</body>
+</html>
