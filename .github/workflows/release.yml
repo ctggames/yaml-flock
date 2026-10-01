@@ -14,6 +14,14 @@
 
 name: Release to Maven Central
 
+# Needed by the final step, which creates the GitHub release. This repository's default workflow
+# token is read-only, so without this the publish succeeds and then the release call 403s - which
+# is how 1.0.0 shipped to the Portal with no GitHub release beside it (#15). Declared here rather
+# than widening the repository-wide setting: it grants the one workflow the one permission, and it
+# travels with the file, so a fork behaves the same without anyone knowing about a setting in a UI.
+permissions:
+  contents: write
+
 on:
   push:
     tags:
