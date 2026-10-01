@@ -131,15 +131,28 @@ public class FlockYamlGenerator extends YAMLGenerator {
 
     @Override
     public void writeString(String text) throws IOException, JsonGenerationException {
-        Object currentValue = _writeContext.getCurrentValue();
-        YamlForceQuote annotation = currentValue.getClass().getAnnotation(YamlForceQuote.class);
-        if (annotation != null && names(annotation.properties(), _writeContext.getCurrentName())) {
+        if (forcesQuotes()) {
             disable(Feature.MINIMIZE_QUOTES);
             super.writeString(text);
             enable(Feature.MINIMIZE_QUOTES);
         } else {
             super.writeString(text);
         }
+    }
+
+    /**
+     * Whether the property now being written is named by a {@link YamlForceQuote} on the type that owns it.
+     * <p>
+     * False where nothing owns it. A scalar written at the root of a document has no owning object - {@code mapper.writeValueAsString("hello")} is the plain case - and a value
+     * with no owner cannot carry a property-level annotation, so there is nothing to look up and the value is written exactly as a plain {@code YAMLFactory} would write it.
+     */
+    private boolean forcesQuotes() {
+        Object owner = _writeContext.getCurrentValue();
+        if (owner == null) {
+            return false;
+        }
+        YamlForceQuote annotation = owner.getClass().getAnnotation(YamlForceQuote.class);
+        return annotation != null && names(annotation.properties(), _writeContext.getCurrentName());
     }
 
 }
