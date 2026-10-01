@@ -74,18 +74,18 @@ That is the whole of it. `FlockYamlFactory.builder()` arrives carrying the setti
 | --- | --- | --- |
 | default flow style | `BLOCK` | the fallback for anything the annotations do not inline |
 | line width | 480 | SnakeYAML folds a flow collection wider than this, which reintroduces exactly the unpredictability the annotations exist to remove |
-| line break | `WIN` | see below |
+| line break | `UNIX` | see below |
 | pretty flow | `false` | keeps an inlined collection on one line |
 | canonical | `false` | canonical output tags and quotes everything |
 | `MINIMIZE_QUOTES` | enabled | without it every scalar is double-quoted, and an inlined map spends more characters on quotes than on content |
 | `WRITE_DOC_START_MARKER` | disabled | no leading `---` on a configuration file |
 | code point limit | 16 MiB | SnakeYAML's own 3 MiB default refuses to read a large document |
 
-**The line break is worth a word**, because it is the opposite of what a library default usually is. These files are generated, committed, and then hand-edited, so a line break disagreeing with what is already on disk rewrites every line of every file the first time anything is written — the exact diff churn this library exists to avoid. `WIN` is what the projects this came from use. Override it where that is not what you want:
+**The line break is worth a word.** The default is LF, because wanting CRLF is a property of a project whose files are already committed with CRLF rather than a property of YAML. If that is your situation, say so — a line break disagreeing with what is on disk rewrites every line of every file the first time anything is written, which is the exact churn this library exists to avoid:
 
 ```java
 ObjectMapper mapper = new ObjectMapper(FlockYamlFactory.builder()
-    .lineBreak(LineBreak.UNIX)
+    .lineBreak(LineBreak.WIN)
     .build());
 ```
 

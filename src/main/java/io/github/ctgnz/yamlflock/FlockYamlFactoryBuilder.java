@@ -21,7 +21,7 @@ import com.fasterxml.jackson.dataformat.yaml.util.StringQuotingChecker;
  * {@link #documentStartMarker(boolean)}, {@link #minimizeQuotes(boolean)} and {@link #codePointLimit(int)} - so refining one of them does not mean taking ownership of all of them:
  *
  * <pre>
- * ObjectMapper mapper = new ObjectMapper(FlockYamlFactory.builder().lineBreak(LineBreak.UNIX).build());
+ * ObjectMapper mapper = new ObjectMapper(FlockYamlFactory.builder().lineBreak(LineBreak.WIN).build());
  * </pre>
  *
  * <h2>The defaults</h2>
@@ -44,7 +44,7 @@ import com.fasterxml.jackson.dataformat.yaml.util.StringQuotingChecker;
  * </tr>
  * <tr>
  * <td>line break</td>
- * <td>WIN</td>
+ * <td>UNIX</td>
  * <td>see below</td>
  * </tr>
  * <tr>
@@ -74,9 +74,9 @@ import com.fasterxml.jackson.dataformat.yaml.util.StringQuotingChecker;
  * </tr>
  * </table>
  * <p>
- * The line break is the one default worth explaining, being the opposite of what a library default usually is. These files are generated, committed, then hand-edited, and a line
- * break that disagrees with what is already on disk rewrites every line of every file the first time anything is written - exactly the diff churn this library exists to avoid.
- * Pass {@link #lineBreak(LineBreak)} where that is not wanted.
+ * The line break is the one default worth a word. A project writing files that are already committed with CRLF endings should say so with {@link #lineBreak(LineBreak)}, because a
+ * line break disagreeing with what is on disk rewrites every line of every file the first time anything is written - the exact diff churn this library exists to avoid. Wanting
+ * that is a property of such a project rather than of YAML, so it is asked for rather than assumed.
  * <h2>Going deeper</h2> Everything {@link YAMLFactoryBuilder} offers still works, and the methods here return this type, so a chain keeps reaching the named settings above however
  * it is ordered. Nothing is validated: {@link #dumperOptions(DumperOptions)} and {@link #loaderOptions(LoaderOptions)} each replace a whole options object, so calling either
  * discards any named setting applied to it beforehand. The last call wins, and a caller who reaches for the underlying options owns the result.
@@ -102,7 +102,7 @@ public class FlockYamlFactoryBuilder extends YAMLFactoryBuilder {
         dumper.setPrettyFlow(false);
         dumper.setCanonical(false);
         dumper.setWidth(DEFAULT_LINE_WIDTH);
-        dumper.setLineBreak(LineBreak.WIN);
+        dumper.setLineBreak(LineBreak.UNIX);
         _dumperOptions = dumper;
 
         LoaderOptions loader = new LoaderOptions();

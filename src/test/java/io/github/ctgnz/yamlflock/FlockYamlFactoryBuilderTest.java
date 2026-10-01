@@ -69,9 +69,16 @@ class FlockYamlFactoryBuilderTest {
                 .printed("revised", new Edition(Format.PAPERBACK, 716, 1972)));
     }
 
+    /**
+     * The builder reproduces the configuration it replaces, given the one thing the library deliberately does not assume.
+     * <p>
+     * That one thing is the line break. The library defaults to {@code UNIX}, because wanting CRLF is a property of a project whose files are already committed with CRLF rather
+     * than of YAML, so a consumer asks for it. The claim here is therefore "one line plus an explicit line break" rather than "one line", and it is written that way on purpose:
+     * comparing two {@code UNIX} configurations would pass while proving nothing about the configuration anybody actually had.
+     */
     @Test
-    void theOneLinerMatchesTheConfigurationItReplaces() throws Exception {
-        String viaBuilder = inclusion(new ObjectMapper(FlockYamlFactory.builder().build())).writeValueAsString(catalogue());
+    void theBuilderMatchesTheConfigurationItReplaces() throws Exception {
+        String viaBuilder = inclusion(new ObjectMapper(FlockYamlFactory.builder().lineBreak(LineBreak.WIN).build())).writeValueAsString(catalogue());
         String viaHand = handConfigured().writeValueAsString(catalogue());
         assertThat(viaBuilder, is(viaHand));
     }
@@ -86,7 +93,7 @@ class FlockYamlFactoryBuilderTest {
         FlockYamlFactoryBuilder builder = FlockYamlFactory.builder();
         DumperOptions dumper = builder.dumperOptions();
         assertThat(dumper.getWidth(), is(FlockYamlFactoryBuilder.DEFAULT_LINE_WIDTH));
-        assertThat(dumper.getLineBreak(), is(LineBreak.WIN));
+        assertThat(dumper.getLineBreak(), is(LineBreak.UNIX));
         assertThat(dumper.getDefaultFlowStyle(), is(FlowStyle.BLOCK));
         assertThat(dumper.isPrettyFlow(), is(false));
         assertThat(dumper.isCanonical(), is(false));
@@ -102,17 +109,26 @@ class FlockYamlFactoryBuilderTest {
 
     @Test
     void aNamedSettingRefinesOneThingAndLeavesTheRest() {
-        FlockYamlFactoryBuilder builder = FlockYamlFactory.builder().lineBreak(LineBreak.UNIX).lineWidth(120);
-        assertThat(builder.dumperOptions().getLineBreak(), is(LineBreak.UNIX));
+        FlockYamlFactoryBuilder builder = FlockYamlFactory.builder().lineBreak(LineBreak.WIN).lineWidth(120);
+        assertThat(builder.dumperOptions().getLineBreak(), is(LineBreak.WIN));
         assertThat(builder.dumperOptions().getWidth(), is(120));
         assertThat(builder.dumperOptions().getDefaultFlowStyle(), is(FlowStyle.BLOCK));
         assertThat(builder.loaderOptions().getCodePointLimit(), is(FlockYamlFactoryBuilder.DEFAULT_CODE_POINT_LIMIT));
     }
 
+    /**
+     * The default is LF, and CRLF is available by asking.
+     * <p>
+     * Both halves matter. A library defaulting to a platform's line ending would be the wrong place for that requirement to live, and a library that could not produce CRLF at all
+     * would push every consumer with committed CRLF files back to assembling {@code DumperOptions} by hand.
+     */
     @Test
-    void theLineBreakDefaultIsWindowsSoGeneratedFilesDoNotChurn() throws Exception {
-        String written = inclusion(new ObjectMapper(FlockYamlFactory.builder().build())).writeValueAsString(catalogue());
-        assertThat(written, containsString("\r\n"));
+    void theDefaultLineBreakIsLfAndCrlfIsAvailableByAskingForIt() throws Exception {
+        String byDefault = inclusion(new ObjectMapper(FlockYamlFactory.builder().build())).writeValueAsString(catalogue());
+        assertThat(byDefault, not(containsString("\r\n")));
+
+        String asked = inclusion(new ObjectMapper(FlockYamlFactory.builder().lineBreak(LineBreak.WIN).build())).writeValueAsString(catalogue());
+        assertThat(asked, containsString("\r\n"));
     }
 
     @Test
