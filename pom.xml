@@ -9,7 +9,7 @@
 
     <name>YAML Flock</name>
     <description>A Jackson extension for YAML that mixes flow and block style in the same document, chosen per type and per property by annotation rather than globally.</description>
-    <url>https://github.com/ctgnz/yaml-flock</url>
+    <url>https://github.com/ctggames/yaml-flock</url>
 
     <licenses>
         <license>
@@ -28,9 +28,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/ctgnz/yaml-flock.git</connection>
-        <developerConnection>scm:git:ssh://github.com/ctgnz/yaml-flock.git</developerConnection>
-        <url>http://github.com/ctgnz/yaml-flock/tree/master</url>
+        <connection>scm:git:git://github.com/ctggames/yaml-flock.git</connection>
+        <developerConnection>scm:git:ssh://github.com/ctggames/yaml-flock.git</developerConnection>
+        <url>http://github.com/ctggames/yaml-flock/tree/master</url>
     </scm>
 
     <properties>
@@ -192,7 +192,7 @@
                                 Keep doclint checking syntax, html and references, and drop only
                                 "missing" - an unresolvable {@link} is a real error and javadoc is the
                                 only thing that finds one. jmsfx learned that at the cost of two
-                                re-signed tags; see ctgnz/jmsfx#148.
+                                re-signed tags; see ctggames/jmsfx#148.
                             -->
                             <doclint>all,-missing</doclint>
                         </configuration>
