@@ -226,7 +226,7 @@ That also means the semantics here are defined by this project's own scenarios r
 
 ## The specification
 
-**[Read them published at ctgnz.github.io/yaml-flock](https://ctgnz.github.io/yaml-flock/)**, where every scenario and the document it produces can be browsed without cloning anything.
+**[Read them published at docs.ctg.co.nz/yaml-flock](https://docs.ctg.co.nz/yaml-flock/)**, where every scenario and the document it produces can be browsed without cloning anything.
 
 The behaviour above is specified by the Cucumber scenarios in [`src/test/resources/features`](src/test/resources/features), written against a library-catalogue model in [`src/test/java/io/github/ctgnz/yamlflock/catalog`](src/test/java/io/github/ctgnz/yamlflock/catalog). Each scenario asserts a complete document, so they read as worked examples rather than as assertions about internals:
 
