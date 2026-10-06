@@ -5,8 +5,12 @@
 #     mvn versions:set -DnewVersion=1.0.0 && git commit -am "Release 1.0.0"
 #     git tag 1.0.0 && git push origin master 1.0.0
 #
-# The deployment is staged on the Portal rather than published automatically - see autoPublish in the pom -
-# so the last step of a release is always a deliberate one taken by hand.
+# A tag pushed by hand stages the deployment on the Portal rather than publishing it - see autoPublish in
+# the pom - so the last step of such a release is a deliberate one taken by hand. A tag pushed by the release
+# train publishes straight through, because the train has already had its approval (ctggames/release-train#6).
+#
+# Every run, rehearsal or release, lists the files it would publish or did publish as release-artifacts.txt,
+# in the run summary and as a workflow artifact, so the train can compare a release with its rehearsal.
 #
 # Run this by hand in "rehearse" mode before a tag depends on it. A re-run uses the workflow as it existed
 # at the tagged commit, so a problem found at tag time cannot be fixed by landing a correction on master:
@@ -82,10 +86,31 @@ jobs:
           exit 1
         fi
 
-    # Everything a release does except the two steps that cannot be undone.
+    # A tag pushed by the release train has already had its approval, so it publishes straight through and
+    # waits until Central reports it published. Any other tag, and a manual "publish", stages a validated
+    # deployment for a person to publish in the Portal, as before. The train's bot account is named in the
+    # RELEASE_TRAIN_BOT organisation variable; while that is unset, every release stages.
+    - name: Decide how the release reaches Central
+      id: publish
+      env:
+        TRAIN_BOT: ${{ vars.RELEASE_TRAIN_BOT }}
+      run: |
+        if [ "$GITHUB_EVENT_NAME" = push ] && [ -n "$TRAIN_BOT" ] && [ "$GITHUB_ACTOR" = "$TRAIN_BOT" ]; then
+          echo "Tag pushed by the release train ($GITHUB_ACTOR): publishing automatically."
+          echo "auto=true" >> "$GITHUB_OUTPUT"
+          echo "wait=PUBLISHED" >> "$GITHUB_OUTPUT"
+        else
+          echo "Staging a validated deployment, to be published in the Portal."
+          echo "auto=false" >> "$GITHUB_OUTPUT"
+          echo "wait=VALIDATED" >> "$GITHUB_OUTPUT"
+        fi
+
+    # Everything a release does except the two steps that cannot be undone. install rather than verify, so
+    # the artifacts land in the local repository in the same layout a real release stages them, for the
+    # artifact list below.
     - name: Rehearse the release build
       if: github.event_name == 'workflow_dispatch' && inputs.mode == 'rehearse'
-      run: mvn -B --no-transfer-progress -Prelease verify
+      run: mvn -B --no-transfer-progress -Prelease install
       env:
         MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
@@ -94,11 +119,46 @@ jobs:
     # to ship artifacts that were not tested on the exact commit being released.
     - name: Publish to the Maven Central Portal
       if: github.event_name == 'push' || inputs.mode == 'publish'
-      run: mvn -B --no-transfer-progress -Prelease deploy
+      run: >-
+        mvn -B --no-transfer-progress -Prelease deploy
+        -Dcentral.autoPublish=${{ steps.publish.outputs.auto }}
+        -Dcentral.waitUntil=${{ steps.publish.outputs.wait }}
       env:
         MAVEN_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
         MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+
+    # The files a release publishes, or a rehearsal would publish, in repository layout without signatures
+    # or checksums: what the release train compares with its own rehearsal. A real release lists what the
+    # publishing plugin staged; a rehearsal lists what it installed locally. An empty list fails the step, so
+    # a change in either layout cannot pass unnoticed as "nothing to compare".
+    - name: List the release artifacts
+      run: |
+        VERSION=$(mvn -q -B help:evaluate -Dexpression=project.version -DforceStdout 2>/dev/null | tail -n1)
+        GROUP=$(mvn -q -B help:evaluate -Dexpression=project.groupId -DforceStdout 2>/dev/null | tail -n1 | tr . /)
+        STAGING=$(find . -type d -path '*/target/central-staging' | head -n1)
+        ROOT=${STAGING:-$HOME/.m2/repository}
+        echo "Listing $GROUP at $VERSION from $ROOT"
+        (cd "$ROOT" && find "$GROUP" -type f -path "*/$VERSION/*") \
+          | grep -vE '\.(asc|md5|sha1|sha256|sha512)$|/maven-metadata[^/]*$|/_remote\.repositories$|\.lastUpdated$' \
+          | sort > release-artifacts.txt
+        if [ ! -s release-artifacts.txt ]; then
+          echo "::error::no artifacts found for $GROUP at $VERSION under $ROOT"
+          exit 1
+        fi
+        cat release-artifacts.txt
+        {
+          echo "### Release artifacts: $VERSION"
+          echo '```'
+          cat release-artifacts.txt
+          echo '```'
+        } >> "$GITHUB_STEP_SUMMARY"
+
+    - name: Keep the artifact list
+      uses: actions/upload-artifact@v7
+      with:
+        name: release-artifacts
+        path: release-artifacts.txt
 
     # After the publish, so a failed deploy cannot leave a release announcing a version that is not on
     # Central. Tag pushes only: on a manual "publish" run there is no tag for a release to describe, and
