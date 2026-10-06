@@ -44,6 +44,13 @@
         -->
         <jackson.version>2.22.3</jackson.version>
         <cucumber.version>7.34.8</cucumber.version>
+        <!--
+            How a release reaches Central. These defaults stage a validated deployment and leave publishing
+            to a person in the Portal. The release workflow sets them to true and PUBLISHED only when the
+            release train pushed the tag, after its own approval (ctggames/release-train#6).
+        -->
+        <central.autoPublish>false</central.autoPublish>
+        <central.waitUntil>VALIDATED</central.waitUntil>
     </properties>
 
     <dependencyManagement>
@@ -235,9 +242,10 @@
                     </plugin>
                     <plugin>
                         <!--
-                            autoPublish false: a tag stages a validated deployment on the Portal and
+                            autoPublish false by default: a tag stages a validated deployment on the Portal and
                             publishing stays a deliberate step, so a bad staging is dropped rather than
-                            superseded. Needs GPG_PRIVATE_KEY, GPG_PASSPHRASE, CENTRAL_USERNAME and
+                            superseded. The release train turns it on, having already had its approval (see
+                            central.autoPublish). Needs GPG_PRIVATE_KEY, GPG_PASSPHRASE, CENTRAL_USERNAME and
                             CENTRAL_PASSWORD as repository secrets - a workflow copied from a sibling
                             project brings the names and none of the values, which is what cost jmsfx
                             2.0.0 two re-signed tags.
@@ -248,7 +256,8 @@
                         <extensions>true</extensions>
                         <configuration>
                             <publishingServerId>central</publishingServerId>
-                            <autoPublish>false</autoPublish>
+                            <autoPublish>${central.autoPublish}</autoPublish>
+                            <waitUntil>${central.waitUntil}</waitUntil>
                         </configuration>
                     </plugin>
                 </plugins>
