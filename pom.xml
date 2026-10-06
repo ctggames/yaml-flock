@@ -37,11 +37,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--
-            Tracks jmsfx, which is where this emitter is already running against 2.22.2 - so the
-            version is proven rather than chosen. hallux came from 2.15.2 and was upgraded to match
-            before consuming this; see ctgnz/hallux#244 for what that surfaced.
+            Tracks jmsfx, which is where this emitter is already running - so the version is proven
+            rather than chosen. hallux came from 2.15.2 and was upgraded to match before consuming
+            this; see ctgnz/hallux#244 for what that surfaced. 2.22.3, not 2.22.2, for two
+            high-severity jackson-core advisories (#20).
         -->
-        <jackson.version>2.22.2</jackson.version>
+        <jackson.version>2.22.3</jackson.version>
         <cucumber.version>7.34.8</cucumber.version>
     </properties>
 
