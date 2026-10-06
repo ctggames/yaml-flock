@@ -55,7 +55,7 @@ The emphasis on *predictable* is deliberate. A file under source control is writ
 <dependency>
     <groupId>io.github.ctgnz</groupId>
     <artifactId>yaml-flock</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
